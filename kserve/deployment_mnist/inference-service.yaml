@@ -1,0 +1,17 @@
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  name: mnist-classifier
+  namespace: kubeflow-user-example-com
+spec:
+  predictor:
+    serviceAccountName: kserve-storage-access
+    pytorch:
+      storageUri: "gs://240924_gkstmdrb/mnist-model/v1/"
+      resources:
+        requests:
+          cpu: 1
+          memory: 1Gi
+        limits:
+          cpu: 1
+          memory: 1Gi
