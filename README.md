@@ -54,7 +54,7 @@ python pipeline/integrated_mnist_pipeline.py
 kubectl apply -f kserve/deployment_mnist/inference-service.yaml
 
 # 예측 API 테스트
-curl -X POST http://mnist-classifier.kubeflow-user-example-com/v1/models/mnist-classifier:predict \
+curl -X POST http://mnist-classifier.kubeflow/v1/models/mnist-classifier:predict \
   -H "Content-Type: application/json" \
   -d @kserve/deployment_mnist/mnist-input.json
 ```

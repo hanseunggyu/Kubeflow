@@ -154,7 +154,8 @@ def model_upload_op(
     blob = bucket.blob(model_path)
     blob.upload_from_filename(f"{trained_model.path}/model.pt")
     
-    gcs_uri = f"gs://{bucket_name}/{model_path}"
+    # KServe는 디렉토리 경로를 기대하므로 디렉토리 경로 반환
+    gcs_uri = f"gs://{bucket_name}/mnist-model/{model_version}/"
     print(f"Model uploaded to: {gcs_uri}")
     return gcs_uri
 
@@ -166,7 +167,7 @@ def model_upload_op(
 def deploy_kserve_op(
     model_gcs_uri: str,
     service_name: str = "mnist-classifier",
-    namespace: str = "kubeflow-user-example-com"
+    namespace: str = "kubeflow"
 ) -> str:
     """KServe InferenceService 배포"""
     import yaml

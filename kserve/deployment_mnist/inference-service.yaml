@@ -2,7 +2,7 @@ apiVersion: serving.kserve.io/v1beta1
 kind: InferenceService
 metadata:
   name: mnist-classifier
-  namespace: kubeflow-user-example-com
+  namespace: kubeflow
 spec:
   predictor:
     serviceAccountName: kserve-storage-access
